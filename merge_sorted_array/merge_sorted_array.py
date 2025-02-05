@@ -4,33 +4,25 @@ class Solution:
         Do not return anything, modify nums1 in-place instead.
         """
         a = m - 1
-        if a < 0:
-            a = 0
-            b = 0
-            c = 0
-            if nums1[a] < nums2[b]:
-                nums1[c] = nums2[b]
-            else:
+        b = n - 1
+        c = m + n - 1
+
+        while b >= 0:
+            if nums1[a] > nums2[b] and a >= 0:
                 nums1[c] = nums1[a]
-                nums1[a] = nums2[b]
-        for c in range(m + n - 1, 0, -1):
-            b = c - m
-            if b < 0:
-                b = 0
-            if nums1[a] < nums2[b]:
-                nums1[c] = nums2[b]
-            else:
-                nums1[c] = nums1[a]
-                nums1[a] = nums2[b]
                 a -= 1
+            else:
+                nums1[c] = nums2[b]
+                b -= 1
+            c -= 1
 
         print("result:", nums1)
 
 
 if __name__ == "__main__":
-    nums1 = [0]
-    nums2 = [1]
-    m = 0
-    n = 1
+    nums1 = [1, 2, 3, 0, 0, 0]
+    nums2 = [4, 5, 6]
+    m = 3
+    n = 3
     sol = Solution()
     sol.merge(nums1, m, nums2, n)
