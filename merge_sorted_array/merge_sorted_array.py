@@ -3,12 +3,17 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        len1 = len(nums1)
-        len2 = len(nums2)
-        for i in range(len2):
-            if nums1[-i] < nums2[-i]:
-                temp = nums2[-i]
-                nums1[-i] = nums2[-i]
+        a = m - 1
+        for c in range(m + n - 1, 0, -1):
+            b = c - m
+            if b < 0:
+                b = 0
+            if nums1[a] < nums2[b]:
+                nums1[c] = nums2[b]
+            else:
+                nums1[c] = nums1[a]
+                nums1[a] = nums2[b]
+                a -= 1
 
         print("result:", nums1)
 
